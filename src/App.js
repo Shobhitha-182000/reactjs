@@ -31,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <h1>Let's get</h1>
+      
       {expenses.map((expense) => (
         <ExpenseItem
           title={expense.title}
