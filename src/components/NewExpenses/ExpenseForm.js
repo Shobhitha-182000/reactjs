@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React,{useState} from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enterTitle,setEnterTitle]=useState('');
     const [enterAmount,setEnterAmount]=useState('');
     const [enterLocation,setEnterLocation]=useState('');
@@ -46,14 +46,18 @@ const ExpenseForm = () => {
         //  })
     }
     const submitHandler=(event)=>{
-        event.preventDefault();
-        const ExpenseData={
+      event.preventDefault();
+        const expenseData={
             title:enterTitle,
             amount:enterAmount,
             locationOfExpenditure:enterLocation,
             date:new Date(enterDate)
         }
-        console.log(ExpenseData);
+        props.onSaveExpenses(expenseData);
+        setEnterTitle('');
+        setEnterAmount('');
+        setEnterLocation('');
+        setEnterDate('');
     }
 
   return (
@@ -61,19 +65,19 @@ const ExpenseForm = () => {
       <div className='new-expense__controls'>
         <div className='new-expense__controls'>
           <label>Title</label>
-          <input type="text" onChange={titleHandler}/>
+          <input type="text" value={enterTitle} onChange={titleHandler}/>
         </div>
         <div className='new-expense__controls'>
           <label>Date</label>
-          <input type="date" min="2021-07-18" max="2023-07-18" onChange={dateHandler} />
+          <input type="date" min="2021-07-18" max="2023-07-18" value={enterDate} onChange={dateHandler} />
         </div>
         <div className='new-expense__controls'>
           <label>Amount</label>
-          <input type="number" min="0.01" step="0.01" onChange={amountHandler}/>
+          <input type="number" min="0.01" step="0.01" value={enterAmount} onChange={amountHandler}/>
         </div>
         <div className='new-expense__controls'>
           <label>location</label>
-          <input type="text"onChange={locationHandler} />
+          <input type="text"  value={enterLocation} onChange={locationHandler} />
         </div>
         <div className='new-expense__actions'> 
         <button type="submit" >Add Expense</button></div>
