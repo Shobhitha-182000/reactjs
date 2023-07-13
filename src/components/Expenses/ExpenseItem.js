@@ -19,9 +19,10 @@ const ExpenseItem=(props)=> {
        <ExpensesDate date={props.date}/>
        {/* <ExpenseDetails title={props.title} amount={props.amount} location={props.locationOfExpenditure}/> */}
       <div className="expense-item__description" ><h2> {currentTitle}</h2></div>
-      <div className="expense-item__description"><h2> {props.locationOfExpenditure}</h2></div>
+      <div className="expense-item__description"><h2> {props.location}</h2></div>
       <div className="expense-item__price">${amount}</div>
-      <button onClick={ClickHandler}>update</button>
+       
+      {/* <button onClick={ClickHandler}>update</button> */}
       
     </Card>
   );
